@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Input.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="Output.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="TMD.cpp">
+      <Filter>Config</Filter>
+    </ClCompile>
+    <ClCompile Include="UE4.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="UtilFactory.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="UtilBase.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="jsoncpp.cpp">
+      <Filter>Config</Filter>
+    </ClCompile>
+    <ClCompile Include="Tool.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="IO">
+      <UniqueIdentifier>{de0e968f-02c6-42e6-8393-1a4377986518}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Config">
+      <UniqueIdentifier>{019a72c2-ad82-4117-ac88-a5ff22e20d1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util">
+      <UniqueIdentifier>{4100381b-0f02-45ce-a7c5-dde2d42f8cfd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager">
+      <UniqueIdentifier>{3e72b620-2cb6-4465-8de4-419feecddff2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Icon">
+      <UniqueIdentifier>{36273db7-89e4-40c1-b776-071bcf309e95}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Input.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="Output.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="TMD.h">
+      <Filter>Config</Filter>
+    </ClInclude>
+    <ClInclude Include="UE4.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="UtilFactory.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="UtilBase.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Tool.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config.json">
+      <Filter>Config</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="D:\Pictures\Icon.jpg">
+      <Filter>Icon</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
