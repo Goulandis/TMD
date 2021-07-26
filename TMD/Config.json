@@ -1,0 +1,16 @@
+{
+	"UE4" : 
+	{
+		"CookDir1" : "D:",
+		"CookDir2" : "",
+		"CookDir3" : "",
+		"CookDir4" : "",
+		"CookDir5" : "",
+		"CookDir6" : "",
+		"CookLog" : "D:\\logs\\cook.log",
+		"OutputPak" : "D:\\pak",
+		"UE4Editor" : "C:\\harix-ue4-engine\\UnrealEngine-4.23.0-release\\Engine\\Binaries\\Win64\\UE4Editor-Cmd.exe",
+		"UProject" : "D:\\Projects\\UE4_MMO_Server_3.3.9\\RobotEngine\\RobotEngine.uproject",
+		"UnrealPak" : "C:\\harix-ue4-engine\\UnrealEngine-4.23.0-release\\Engine\\Binaries\\Win64\\UnrealPak.exe"
+	}
+}
