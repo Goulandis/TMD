@@ -118,6 +118,7 @@ bool Tool::FileOrDirExist(const string& path)
 		if (path.empty())
 		{
 			Output::OutError("path does not exist ");
+			return;
 		}
 		else
 		{
