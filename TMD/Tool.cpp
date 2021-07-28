@@ -51,8 +51,8 @@ bool Tool::ReaderConfig(string util, Json::Value& root)
 	(strrchr(szFilePath, '\\'))[0] = 0;
 
 //#ifdef _DEBUG
-	//如果是Debug模式获取当前程序所在路径
-	//_getcwd(szFilePath, MAX_PATH);	
+//	//如果是Debug模式获取当前程序所在路径覆盖exe路径
+//	_getcwd(szFilePath, MAX_PATH);	
 //#endif
 
 	path = szFilePath;

@@ -53,7 +53,7 @@ void UE4::Analyze(string cmd)
 	}
 	else if (*it == cookpak)
 	{
-		
+		CookPak(it, cmdexe, cmd);
 	}
 	else
 	{
@@ -311,7 +311,15 @@ void UE4::List(vector<string>::iterator it, string& cmdexe, string cmd)
 
 void UE4::CookPak(vector<string>::iterator it, string& cmdexe, string cmd)
 {
-	string cook = UE4Editor + " " + UProject + " - run = Cook - TargetPlatform = Android_ASTC - fileopenlog - unversioned - abslog =" +CookLog + " -stdout -CrashForUAT -unattended -NoLogTimes -UTF8Output";
+	vector<string>::iterator p = it;
+	++p;
+	if (atoi((*p).data()) < 1 || atoi((*p).data()) > 6)
+	{
+		Output::OutError(cmd);
+		// Output::OutHelp(list);
+		return;
+	}
+	string cook = UE4Editor + " " + UProject + " -run=Cook -TargetPlatform=Android_ASTC -fileopenlog -unversioned -iterate -abslog=" + CookLog + " -stdout -CrashForUAT -unattended -NoLogTimes -UTF8Output";
 	string pak = "";
 	Pak(it, pak, cmd);
 	system(cook.data());
