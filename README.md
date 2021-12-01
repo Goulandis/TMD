@@ -25,7 +25,7 @@ UE4 Pak
 
 ## 最新版本
 
-[TMD_1.0.0_20211201_release](https://github.com/Goulandis/TMD/blob/main/Zip/TMD_1.0.0_20211201_release.zip)
+[TMD_1.0.0_20211201_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.0.0_20211201_release.zip)
 
 ## TMD_1.0.0_20211201_release
 
@@ -59,7 +59,7 @@ UE4 Pak
 
 ## TMD_0.1.1_20210728_alpha
 
-[TMD_0.1.1_20210728_alpha](https://github.com/Goulandis/TMD/blob/main/Zip/TMD_0.1.1_20210728_alpha.zip)
+[TMD_0.1.1_20210728_alpha](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_0.1.1_20210728_alpha.zip)
 
 支持功能：
 
