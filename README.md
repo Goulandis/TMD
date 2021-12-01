@@ -53,6 +53,8 @@ UE4 Pak
   如何使用？
 
   在软件根目录/Config/SoftwareSetConfig.ini中的[SoftwareSetLinkStart]字段下按照软件名+空格+下载地址的格式添加自己的软件库即可。
+  
+  注意：默认软件库中部分软件使用了官网下载链接，可能会出现链接失效的情况。
 
   TMD如何下载软件？
 
