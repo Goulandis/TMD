@@ -5,6 +5,7 @@
 TMD---工具命令行
 
 TMD工具命令行是一个集成个人学习工作中常使用的一些命令集和工具集的集成自动化调用的命令行工具集。
+新增的IDE界面使用DevExpress.v20.2.3框架搭建，下载源码需要有框架支持。
 
 当前支持工具集：
 
@@ -27,6 +28,10 @@ UE4 Pak
 ## 最新版本
 
 [TMD_1.0.0_20211201_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.0.0_20211201_release.zip)
+
+##历史版本
+
+[TMD_0.1.1_20210728_alpha](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_0.1.1_20210728_alpha.zip)
 
 ## TMD_1.0.0_20211201_release
 
