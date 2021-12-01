@@ -241,6 +241,10 @@ namespace IDE
         private bool SpawnCookAndPakBatFile()
         {
             CookPakBatPath = WorkDir + "BAT\\CookPak.bat";
+            if (!File.Exists(CookPakBatPath))
+            {
+                File.Create(CookPakBatPath);
+            }
             StreamWriter sw = new StreamWriter(CookPakBatPath);
             sw.Write("");
             if (!File.Exists(CookPakBatTempletPath))
@@ -635,6 +639,10 @@ namespace IDE
         private bool SpawnSOAnalyzeBatFile()
         {  
             SOAnalyzeBatPath = WorkDir + "\\BAT\\SOAnalyze.bat";
+            if (!File.Exists(SOAnalyzeBatPath))
+            {
+                File.Create(SOAnalyzeBatPath);
+            }
             StreamWriter sw = new StreamWriter(SOAnalyzeBatPath);
             sw.Write("");
             if (!File.Exists(SOAnalyzeBatTemplate))
@@ -890,5 +898,29 @@ namespace IDE
             }
         }
         #endregion
+
+        private void Btn_PakList_Click(object sender, EventArgs e)
+        {
+            fileDialog.Title = "Select .pak file";
+            fileDialog.Filter = "Pak文件|*.pak";
+            string FilePath = string.Empty;
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                FilePath = fileDialog.FileName;
+            }
+            string PakListBat = WorkDir + "BAT\\PakList.bat";
+            if (!File.Exists(PakListBat))
+            {
+                File.Create(PakListBat);
+            }
+            StreamWriter sw = new StreamWriter(PakListBat);
+            string PakListCmd = "set PakListCmd=" + buttonEdit_UnrealPaK.Text + " " + FilePath + " -list";
+            sw.WriteLine(PakListCmd);
+            sw.WriteLine("%PakListCmd%");
+            sw.WriteLine("pause");
+            sw.Close();
+            System.Threading.Thread.Sleep(200);
+            Process.Start(PakListBat);
+        }
     }
 }
