@@ -861,7 +861,7 @@ namespace IDE
                     }
                     else if (ConfigContents[i] == "[TMD]")
                     {
-                        TMDEXE = WorkDir + ConfigContents[i + 1];
+                        TMDEXE = ConfigContents[i + 1];
                     }
                     else if (ConfigContents[i] == "[AboutImage]")
                     {
@@ -884,7 +884,10 @@ namespace IDE
         }
         private void label_TMD_Click(object sender, EventArgs e)
         {
-            Process.Start(TMDEXE);
+            if (File.Exists(TMDEXE))
+            {
+                Process.Start(TMDEXE);
+            }
         }
         #endregion
     }
