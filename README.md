@@ -7,20 +7,19 @@ TMD---工具命令行
 TMD工具命令行是一个集成个人学习工作中常使用的一些命令集和工具集的集成自动化调用的命令行工具集。
 
 当前支持工具集：
+-----------2021.07.28
+
+IDE界面
+
+SO文件堆栈分析
+
+一键软件库下载
 
 -----------2021.07.28
 
 UE4 Cook
 
 UE4 Pak
-
------------2021.07.28
-
-IDE界面
-
-一键软件库下载
-
-
 
 ----
 
@@ -60,7 +59,7 @@ IDE界面
 
 ## TMD_0.1.1_20210728_alpha
 
-[TMD_0.1.1_20210728_alpha](https://github.com/Goulandis/TMD/raw/main/Zip/TMD.zip)
+[TMD_0.1.1_20210728_alpha](https://github.com/Goulandis/TMD/blob/main/Zip/TMD_0.1.1_20210728_alpha.zip)
 
 支持功能：
 
