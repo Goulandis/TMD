@@ -331,7 +331,7 @@ namespace IDE
 
                         PakDir.Add(StrArr[StrArr.Length - 1] + "_" + platform + "_%time%");
                         string cmd = "set pakcmd" + indextmp + "=%UnrealPak% %outputdir%" + "\\Paks_%time%\\"
-                            + PakDir.Last() + " -Create=" + "%pakdir" + indextmp + "% -compress";
+                            + PakDir.Last() + ".pak -Create=" + "%pakdir" + indextmp + "% -compress";
                         BatList.Insert(i + 1 + indextmp, cmd);
                     }
                 }
