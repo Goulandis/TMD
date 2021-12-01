@@ -7,8 +7,8 @@ using System.IO;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors;
 using System.Diagnostics;
-using System.Net;
 using Microsoft.Win32;
+using System.Drawing;
 
 namespace IDE
 {
@@ -46,6 +46,11 @@ namespace IDE
             this.Hide();
             notifyIcon.Visible = true;
         }
+        private void TMDIDE_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            WriteCookAndPakConfigFile();
+            WriteSOAnalyzeConfigFile();
+        }
         #region Cook&Pak
         string UEEditorCmd = "\\Engine\\Binaries\\Win64\\UE4Editor-Cmd.exe";
         string UnrealPak = "\\Engine\\Binaries\\Win64\\UnrealPak.exe";
@@ -68,8 +73,13 @@ namespace IDE
             ReadCookAndPakConfigFile();
             gv_CookPak.OptionsBehavior.Editable = false;
         }
-        private void WriteCookAndPakConfigFile()
+        private bool WriteCookAndPakConfigFile()
         {
+            if (!File.Exists(CookPakConfigPath))
+            {
+                XtraMessageBox.Show("未检测到" + CookPakConfigPath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
             StreamWriter sw = new StreamWriter(CookPakConfigPath);
             sw.WriteLine("[UnrealEngine]");
             sw.WriteLine(buttonEdit_UEFolder.Text);
@@ -108,6 +118,7 @@ namespace IDE
             sw.WriteLine(checkEdit_Iterate.Checked);
             sw.WriteLine(" ");
             sw.Close();
+            return true;
         }
         private bool ReadCookAndPakConfigFile()
         {
@@ -534,21 +545,27 @@ namespace IDE
         #region SO Anlyze
         string SOAnalyzeConfig;
         string SOAnalyzeBatPath;
-        string SOAnalyzeBatTemplatePath;
+        string SOAnalyzeBatTemplate;
         private void InitSOAnalyze()
         {
             SOAnalyzeConfig = WorkDir + "Config\\SOAnalyzeConfig.ini";
-            SOAnalyzeBatTemplatePath = WorkDir + "BAT\\SOAnalyzeTemplate.bat";
+            SOAnalyzeBatTemplate = WorkDir + "BAT\\SOAnalyzeTemplate.bat";
             ReadSOAnalyzeConfigFile();
         }
-        private void WriteSOAnalyzeConfigFile()
+        private bool WriteSOAnalyzeConfigFile()
         {
+            if (!File.Exists(SOAnalyzeConfig))
+            {
+                XtraMessageBox.Show("未检测到" + SOAnalyzeConfig, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
             StreamWriter sw = new StreamWriter(SOAnalyzeConfig);
             sw.WriteLine("[ADBSOAnalyzeTool]");
             sw.WriteLine(buttonEdit_AnalyzeToolPath.Text);
             sw.WriteLine("[SOFilePath]");
             sw.WriteLine(buttonEdit_SOFilePath.Text);
             sw.Close();
+            return true;
         }
         private bool ReadSOAnalyzeConfigFile()
         {
@@ -620,12 +637,12 @@ namespace IDE
             SOAnalyzeBatPath = WorkDir + "\\BAT\\SOAnalyze.bat";
             StreamWriter sw = new StreamWriter(SOAnalyzeBatPath);
             sw.Write("");
-            if (!File.Exists(SOAnalyzeBatTemplatePath))
+            if (!File.Exists(SOAnalyzeBatTemplate))
             {
-                XtraMessageBox.Show("未检测到" + SOAnalyzeBatTemplatePath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("未检测到" + SOAnalyzeBatTemplate, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            List<string> BatList = File.ReadAllLines(SOAnalyzeBatTemplatePath).ToList();
+            List<string> BatList = File.ReadAllLines(SOAnalyzeBatTemplate).ToList();
             for (int i = 0; i < BatList.Count; ++i)
             {
                 if (BatList[i] == "rem adbsoanalyzetool")
@@ -846,9 +863,13 @@ namespace IDE
                     {
                         TMDEXE = WorkDir + ConfigContents[i + 1];
                     }
-                    else if (ConfigContents[i] == "[Image]")
+                    else if (ConfigContents[i] == "[AboutImage]")
                     {
-                        pictureBox_About.Image = System.Drawing.Image.FromFile(WorkDir + ConfigContents[i + 1]);
+                        pictureBox_About.Image = Image.FromFile(WorkDir + ConfigContents[i + 1]);
+                    }
+                    else if (ConfigContents[i] == "[IconImage]")
+                    { 
+                        IconOptions.Image = Image.FromFile(WorkDir + ConfigContents[i + 1]);
                     }
                 }
             }

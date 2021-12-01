@@ -1162,7 +1162,7 @@ namespace IDE
             this.showFormToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(181, 136);
+            this.contextMenuStrip.Size = new System.Drawing.Size(145, 114);
             this.contextMenuStrip.MouseEnter += new System.EventHandler(this.contextMenuStrip_MouseEnter);
             this.contextMenuStrip.MouseLeave += new System.EventHandler(this.contextMenuStrip_MouseLeave);
             // 
@@ -1197,7 +1197,7 @@ namespace IDE
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -1214,9 +1214,8 @@ namespace IDE
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(704, 531);
             this.Controls.Add(this.layoutControl1);
-            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("TMDIDE.IconOptions.Image")));
             this.Name = "TMDIDE";
-            this.Text = "TMDIDE";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TMDIDE_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl)).EndInit();
