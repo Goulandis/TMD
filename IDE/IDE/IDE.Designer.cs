@@ -38,6 +38,7 @@ namespace IDE
             this.checkEdit_Iterate = new DevExpress.XtraEditors.CheckEdit();
             this.layoutControl3 = new DevExpress.XtraLayout.LayoutControl();
             this.layoutControl4 = new DevExpress.XtraLayout.LayoutControl();
+            this.Btn_PakList = new DevExpress.XtraEditors.SimpleButton();
             this.Btn_Cancel = new DevExpress.XtraEditors.SimpleButton();
             this.Btn_Run = new DevExpress.XtraEditors.SimpleButton();
             this.Btn_RemovePath = new DevExpress.XtraEditors.SimpleButton();
@@ -48,6 +49,8 @@ namespace IDE
             this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem27 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem13 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.gc_CookPak = new DevExpress.XtraGrid.GridControl();
             this.gv_CookPak = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -130,9 +133,14 @@ namespace IDE
             this.uECookPakToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Btn_PakList = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem27 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem13 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.xtraTabPage_Settings = new DevExpress.XtraTab.XtraTabPage();
+            this.layoutControl8 = new DevExpress.XtraLayout.LayoutControl();
+            this.layoutControlGroup7 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.label1 = new System.Windows.Forms.Label();
+            this.layoutControlItem28 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem14 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.layoutControlItem29 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl)).BeginInit();
@@ -151,6 +159,8 @@ namespace IDE
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gc_CookPak)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_CookPak)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
@@ -223,8 +233,13 @@ namespace IDE
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem13)).BeginInit();
+            this.xtraTabPage_Settings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl8)).BeginInit();
+            this.layoutControl8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem29)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -251,7 +266,8 @@ namespace IDE
             this.xtraTabPage_UnrealEngineCookAndPak,
             this.xtraTabPage_SOAnalyze,
             this.xtraTabPage_SoftwareSet,
-            this.xtraTabPage_About});
+            this.xtraTabPage_About,
+            this.xtraTabPage_Settings});
             // 
             // xtraTabPage_UnrealEngineCookAndPak
             // 
@@ -315,6 +331,16 @@ namespace IDE
             this.layoutControl4.Size = new System.Drawing.Size(119, 241);
             this.layoutControl4.TabIndex = 5;
             this.layoutControl4.Text = "layoutControl4";
+            // 
+            // Btn_PakList
+            // 
+            this.Btn_PakList.Location = new System.Drawing.Point(12, 109);
+            this.Btn_PakList.Name = "Btn_PakList";
+            this.Btn_PakList.Size = new System.Drawing.Size(95, 22);
+            this.Btn_PakList.StyleController = this.layoutControl4;
+            this.Btn_PakList.TabIndex = 8;
+            this.Btn_PakList.Text = "PakList";
+            this.Btn_PakList.Click += new System.EventHandler(this.Btn_PakList_Click);
             // 
             // Btn_Cancel
             // 
@@ -415,6 +441,23 @@ namespace IDE
             this.emptySpaceItem1.Name = "emptySpaceItem1";
             this.emptySpaceItem1.Size = new System.Drawing.Size(99, 46);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlItem27
+            // 
+            this.layoutControlItem27.Control = this.Btn_PakList;
+            this.layoutControlItem27.Location = new System.Drawing.Point(0, 97);
+            this.layoutControlItem27.Name = "layoutControlItem27";
+            this.layoutControlItem27.Size = new System.Drawing.Size(99, 26);
+            this.layoutControlItem27.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem27.TextVisible = false;
+            // 
+            // emptySpaceItem13
+            // 
+            this.emptySpaceItem13.AllowHotTrack = false;
+            this.emptySpaceItem13.Location = new System.Drawing.Point(0, 52);
+            this.emptySpaceItem13.Name = "emptySpaceItem13";
+            this.emptySpaceItem13.Size = new System.Drawing.Size(99, 45);
+            this.emptySpaceItem13.TextSize = new System.Drawing.Size(0, 0);
             // 
             // gc_CookPak
             // 
@@ -1170,71 +1213,115 @@ namespace IDE
             this.showFormToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(145, 114);
+            this.contextMenuStrip.Size = new System.Drawing.Size(181, 136);
             this.contextMenuStrip.MouseEnter += new System.EventHandler(this.contextMenuStrip_MouseEnter);
             this.contextMenuStrip.MouseLeave += new System.EventHandler(this.contextMenuStrip_MouseLeave);
             // 
             // uECookToolStripMenuItem
             // 
             this.uECookToolStripMenuItem.Name = "uECookToolStripMenuItem";
-            this.uECookToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.uECookToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.uECookToolStripMenuItem.Text = "UECook";
             this.uECookToolStripMenuItem.Click += new System.EventHandler(this.uECookToolStripMenuItem_Click);
             // 
             // uEPakToolStripMenuItem
             // 
             this.uEPakToolStripMenuItem.Name = "uEPakToolStripMenuItem";
-            this.uEPakToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.uEPakToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.uEPakToolStripMenuItem.Text = "UEPak";
             this.uEPakToolStripMenuItem.Click += new System.EventHandler(this.uEPakToolStripMenuItem_Click);
             // 
             // uECookPakToolStripMenuItem
             // 
             this.uECookPakToolStripMenuItem.Name = "uECookPakToolStripMenuItem";
-            this.uECookPakToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.uECookPakToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.uECookPakToolStripMenuItem.Text = "UECook&Pak";
             this.uECookPakToolStripMenuItem.Click += new System.EventHandler(this.uECookPakToolStripMenuItem_Click);
             // 
             // showFormToolStripMenuItem
             // 
             this.showFormToolStripMenuItem.Name = "showFormToolStripMenuItem";
-            this.showFormToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.showFormToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.showFormToolStripMenuItem.Text = "Show Form";
             this.showFormToolStripMenuItem.Click += new System.EventHandler(this.showFormToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // Btn_PakList
+            // xtraTabPage_Settings
             // 
-            this.Btn_PakList.Location = new System.Drawing.Point(12, 109);
-            this.Btn_PakList.Name = "Btn_PakList";
-            this.Btn_PakList.Size = new System.Drawing.Size(95, 22);
-            this.Btn_PakList.StyleController = this.layoutControl4;
-            this.Btn_PakList.TabIndex = 8;
-            this.Btn_PakList.Text = "PakList";
-            this.Btn_PakList.Click += new System.EventHandler(this.Btn_PakList_Click);
+            this.xtraTabPage_Settings.Controls.Add(this.layoutControl8);
+            this.xtraTabPage_Settings.Name = "xtraTabPage_Settings";
+            this.xtraTabPage_Settings.Size = new System.Drawing.Size(678, 481);
+            this.xtraTabPage_Settings.Text = "Setting";
             // 
-            // layoutControlItem27
+            // layoutControl8
             // 
-            this.layoutControlItem27.Control = this.Btn_PakList;
-            this.layoutControlItem27.Location = new System.Drawing.Point(0, 97);
-            this.layoutControlItem27.Name = "layoutControlItem27";
-            this.layoutControlItem27.Size = new System.Drawing.Size(99, 26);
-            this.layoutControlItem27.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem27.TextVisible = false;
+            this.layoutControl8.Controls.Add(this.textBox1);
+            this.layoutControl8.Controls.Add(this.label1);
+            this.layoutControl8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl8.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl8.Name = "layoutControl8";
+            this.layoutControl8.Root = this.layoutControlGroup7;
+            this.layoutControl8.Size = new System.Drawing.Size(678, 481);
+            this.layoutControl8.TabIndex = 0;
+            this.layoutControl8.Text = "layoutControl8";
             // 
-            // emptySpaceItem13
+            // layoutControlGroup7
             // 
-            this.emptySpaceItem13.AllowHotTrack = false;
-            this.emptySpaceItem13.Location = new System.Drawing.Point(0, 52);
-            this.emptySpaceItem13.Name = "emptySpaceItem13";
-            this.emptySpaceItem13.Size = new System.Drawing.Size(99, 45);
-            this.emptySpaceItem13.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlGroup7.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup7.GroupBordersVisible = false;
+            this.layoutControlGroup7.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem28,
+            this.emptySpaceItem14,
+            this.layoutControlItem29});
+            this.layoutControlGroup7.Name = "layoutControlGroup7";
+            this.layoutControlGroup7.Size = new System.Drawing.Size(678, 481);
+            this.layoutControlGroup7.TextVisible = false;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(12, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(654, 20);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "label1";
+            // 
+            // layoutControlItem28
+            // 
+            this.layoutControlItem28.Control = this.label1;
+            this.layoutControlItem28.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem28.Name = "layoutControlItem28";
+            this.layoutControlItem28.Size = new System.Drawing.Size(658, 24);
+            this.layoutControlItem28.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem28.TextVisible = false;
+            // 
+            // emptySpaceItem14
+            // 
+            this.emptySpaceItem14.AllowHotTrack = false;
+            this.emptySpaceItem14.Location = new System.Drawing.Point(0, 48);
+            this.emptySpaceItem14.Name = "emptySpaceItem14";
+            this.emptySpaceItem14.Size = new System.Drawing.Size(658, 413);
+            this.emptySpaceItem14.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(136, 36);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(530, 20);
+            this.textBox1.TabIndex = 5;
+            // 
+            // layoutControlItem29
+            // 
+            this.layoutControlItem29.Control = this.textBox1;
+            this.layoutControlItem29.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem29.Name = "layoutControlItem29";
+            this.layoutControlItem29.Size = new System.Drawing.Size(658, 24);
+            this.layoutControlItem29.TextSize = new System.Drawing.Size(112, 14);
             // 
             // TMDIDE
             // 
@@ -1269,6 +1356,8 @@ namespace IDE
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gc_CookPak)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_CookPak)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
@@ -1341,8 +1430,13 @@ namespace IDE
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             this.contextMenuStrip.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem13)).EndInit();
+            this.xtraTabPage_Settings.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl8)).EndInit();
+            this.layoutControl8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem29)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1451,6 +1545,14 @@ namespace IDE
         private DevExpress.XtraEditors.SimpleButton Btn_PakList;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem27;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem13;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage_Settings;
+        private DevExpress.XtraLayout.LayoutControl layoutControl8;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup7;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem28;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem14;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem29;
     }
 }
 

@@ -229,6 +229,7 @@
     <Compile Include="IDE.designer.cs">
       <DependentUpon>IDE.cs</DependentUpon>
     </Compile>
+    <Compile Include="KeyCodeHook.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="IDE.resx">

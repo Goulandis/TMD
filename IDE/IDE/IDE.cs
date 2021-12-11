@@ -9,19 +9,23 @@ using DevExpress.XtraEditors;
 using System.Diagnostics;
 using Microsoft.Win32;
 using System.Drawing;
+using System.Runtime.InteropServices;
+using Microsoft.Win32;
 
 namespace IDE
 {
     public partial class TMDIDE : DevExpress.XtraEditors.XtraForm
     {
+        #region Form
         OpenFileDialog fileDialog;
         FolderBrowserDialog folderDialog;
         string WorkDir;
+        KeyCodeHook KHook;
+
         public TMDIDE()
         {
             InitializeComponent();
-            Init();
-            
+            Init();           
         }
         private void Init()
         {
@@ -35,6 +39,8 @@ namespace IDE
             InitSOAnalyze();
             InitSoftwareSet();
             InitAbout();
+            InitContextMenu();
+            KeyCodeListen();
         }
         private void ShowForm()
         {
@@ -45,12 +51,53 @@ namespace IDE
         {
             this.Hide();
             notifyIcon.Visible = true;
-        }
+        }  
         private void TMDIDE_FormClosed(object sender, FormClosedEventArgs e)
         {
             WriteCookAndPakConfigFile();
             WriteSOAnalyzeConfigFile();
         }
+
+        private void KeyCodeListen()
+        {
+            KHook = new KeyCodeHook();
+            KHook.KeyDownEvent += new KeyEventHandler(KeyPressd);
+            KHook.Start();
+        }
+
+        private void KeyPressd(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == Convert.ToInt32(Keys.Q) && Convert.ToInt32(ModifierKeys) == Convert.ToInt32(Keys.Alt))
+            {
+                XtraMessageBox.Show("未检测到键盘按下", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void InitContextMenu()
+        {
+            string ConfigFile = WorkDir + "Config\\Config.ini";
+            if (!File.Exists(ConfigFile))
+            {
+                File.Create(ConfigFile);
+            }
+            System.Threading.Thread.Sleep(200);
+            StreamWriter sw = new StreamWriter(ConfigFile);
+            XtraMessageBox.Show(contextMenuStrip.Items.Count.ToString(), "Count", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            for (int i = 0; i < contextMenuStrip.Items.Count; ++i)
+            {
+                string keyStr = contextMenuStrip.Items[i].Text + ":" + "Alt+" + Enum.GetName(typeof(Keys), 49+i);
+                sw.WriteLine(keyStr);
+            }
+            sw.Close();
+            //List<string> ConfigList = File.ReadAllLines(CookPakConfigPath).ToList<string>();
+
+            //for (int i = 0; i < contextMenuStrip.Items.Count; ++i)
+            //{
+            //    contextMenuStrip.Items[i];
+            //}
+        }
+
+        #endregion
         #region Cook&Pak
         string UEEditorCmd = "\\Engine\\Binaries\\Win64\\UE4Editor-Cmd.exe";
         string UnrealPak = "\\Engine\\Binaries\\Win64\\UnrealPak.exe";
@@ -545,6 +592,30 @@ namespace IDE
             WriteCookAndPakConfigFile();
             HideForm(); 
         }
+
+        private void Btn_PakList_Click(object sender, EventArgs e)
+        {
+            fileDialog.Title = "Select .pak file";
+            fileDialog.Filter = "Pak文件|*.pak";
+            string FilePath = string.Empty;
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                FilePath = fileDialog.FileName;
+            }
+            string PakListBat = WorkDir + "BAT\\PakList.bat";
+            if (!File.Exists(PakListBat))
+            {
+                File.Create(PakListBat);
+            }
+            StreamWriter sw = new StreamWriter(PakListBat);
+            string PakListCmd = "set PakListCmd=" + buttonEdit_UnrealPaK.Text + " " + FilePath + " -list";
+            sw.WriteLine(PakListCmd);
+            sw.WriteLine("%PakListCmd%");
+            sw.WriteLine("pause");
+            sw.Close();
+            System.Threading.Thread.Sleep(200);
+            Process.Start(PakListBat);
+        }
         #endregion
         #region SO Anlyze
         string SOAnalyzeConfig;
@@ -898,29 +969,5 @@ namespace IDE
             }
         }
         #endregion
-
-        private void Btn_PakList_Click(object sender, EventArgs e)
-        {
-            fileDialog.Title = "Select .pak file";
-            fileDialog.Filter = "Pak文件|*.pak";
-            string FilePath = string.Empty;
-            if (fileDialog.ShowDialog() == DialogResult.OK)
-            {
-                FilePath = fileDialog.FileName;
-            }
-            string PakListBat = WorkDir + "BAT\\PakList.bat";
-            if (!File.Exists(PakListBat))
-            {
-                File.Create(PakListBat);
-            }
-            StreamWriter sw = new StreamWriter(PakListBat);
-            string PakListCmd = "set PakListCmd=" + buttonEdit_UnrealPaK.Text + " " + FilePath + " -list";
-            sw.WriteLine(PakListCmd);
-            sw.WriteLine("%PakListCmd%");
-            sw.WriteLine("pause");
-            sw.Close();
-            System.Threading.Thread.Sleep(200);
-            Process.Start(PakListBat);
-        }
     }
 }
