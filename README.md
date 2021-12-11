@@ -27,13 +27,15 @@ UE4 Pak
 
 ## 最新版本
 
-[TMD_1.0.0_20211201_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.0.0_20211201_release.zip)
+[TMD_1.1.0_20211201_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.1.0._20211201_release.zip)
 
 ##历史版本
 
 [TMD_0.1.1_20210728_alpha](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_0.1.1_20210728_alpha.zip)
 
-## TMD_1.0.0_20211201_release
+## TMD_1.1.0_20211201_release
+
+[TMD_1.1.0_20211201_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.1.0._20211201_release.zip)
 
 - 新增IDE界面
 
@@ -44,6 +46,8 @@ UE4 Pak
   实现不依赖引擎版本，不依赖项目类型。
 
 - 支持可选只渲染修改内容
+
+- 新增Pak包内容查看功能
 
 - 新增SO文件堆栈分析功能
 
