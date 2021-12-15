@@ -34,14 +34,15 @@ UE4 Pak
 ----
 
 ## 最新版本
-
-[TMD_1.1.0_20211201_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.1.0._20211201_release.zip)
+[TMD_1.2.1_20211215_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.2.1_20211201_release.zip)
 
 ##历史版本
+[TMD_1.1.0_20211201_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.1.0._20211201_release.zip)
 
 [TMD_0.1.1_20210728_alpha](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_0.1.1_20210728_alpha.zip)
 
 ## TMD_1.2.0_20211215_release
+[TMD_1.2.1_20211215_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.2.1_20211201_release.zip)
 
 - 新增默认快捷键配置
 
