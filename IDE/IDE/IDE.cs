@@ -9,19 +9,38 @@ using DevExpress.XtraEditors;
 using System.Diagnostics;
 using Microsoft.Win32;
 using System.Drawing;
-using System.Runtime.InteropServices;
-using Microsoft.Win32;
 
 namespace IDE
 {
-    public partial class TMDIDE : DevExpress.XtraEditors.XtraForm
+    public partial class TMDIDE : XtraForm
     {
-        #region Form
-        OpenFileDialog fileDialog;
-        FolderBrowserDialog folderDialog;
+        public static OpenFileDialog fileDialog;
+        public static FolderBrowserDialog folderDialog;
+        //工作目录
         string WorkDir;
-        KeyCodeHook KHook;
+        List<string> ConfigList;
+        public static string ConfigFile;
+        //热键ID及热键字典
+        Dictionary<int, string> HotKeyDic;
+        //系统状态值
+        const int WM_HOTKEY = 0x312;//当有按键按下时
+        const int WM_CREATE = 0x1;//当窗体创建时
+        const int WM_DESTROY = 0x2;//当窗体销毁时
+        //热键ID
+        public static int HotKeyID = 0;
+        //热键辅助功能键
+        HotKey.KeyModifiers modifiers;
+        //热键ASCII码偏移量
+        const int HotKeyOffset = 49;
+        //预留热键事件委托
+        delegate void HotKeyEvent(string ScriptPath);
 
+        //预留热键事件
+        HotKeyEvent HotKeyEvent5;
+        HotKeyEvent HotKeyEvent6;
+        HotKeyEvent HotKeyEvent7;
+        HotKeyEvent HotKeyEvent8;
+        HotKeyEvent HotKeyEvent9;
         public TMDIDE()
         {
             InitializeComponent();
@@ -32,15 +51,14 @@ namespace IDE
             fileDialog = new OpenFileDialog();
             folderDialog = new FolderBrowserDialog();
             WorkDir = AppDomain.CurrentDomain.BaseDirectory;
-
+            ConfigFile = WorkDir + "Config\\Config.ini";
             notifyIcon.Visible = false;
-
+            HotKeyDic = new Dictionary<int, string>();
+            modifiers = HotKey.KeyModifiers.Alt;
             InitCookAndPak();
             InitSOAnalyze();
             InitSoftwareSet();
             InitAbout();
-            InitContextMenu();
-            KeyCodeListen();
         }
         private void ShowForm()
         {
@@ -57,46 +75,252 @@ namespace IDE
             WriteCookAndPakConfigFile();
             WriteSOAnalyzeConfigFile();
         }
-
-        private void KeyCodeListen()
+        #region HotKey
+        //Winform重写函数，由系统在不同状态下自动调用
+        protected override void WndProc(ref Message msg)
         {
-            KHook = new KeyCodeHook();
-            KHook.KeyDownEvent += new KeyEventHandler(KeyPressd);
-            KHook.Start();
-        }
-
-        private void KeyPressd(object sender, KeyEventArgs e)
-        {
-            if (e.KeyValue == Convert.ToInt32(Keys.Q) && Convert.ToInt32(ModifierKeys) == Convert.ToInt32(Keys.Alt))
+            base.WndProc(ref msg);
+            switch (msg.Msg)
             {
-                XtraMessageBox.Show("未检测到键盘按下", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                case WM_CREATE:
+                    ReadConfigFile();
+                    break;
+                case WM_DESTROY:
+                    DestroyContextMenu();
+                    break;
+                case WM_HOTKEY:
+                    HotKeyDown(msg.WParam.ToInt32());
+                    break;
             }
         }
-
-        private void InitContextMenu()
+        private void Restart()
         {
-            string ConfigFile = WorkDir + "Config\\Config.ini";
+            DestroyContextMenu();
+            Application.Restart();
+        }
+        private void WriteConfigFile()
+        {
             if (!File.Exists(ConfigFile))
             {
-                File.Create(ConfigFile);
+                XtraMessageBox.Show("未找到配置文件:" + ConfigFile, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            System.Threading.Thread.Sleep(200);
             StreamWriter sw = new StreamWriter(ConfigFile);
-            XtraMessageBox.Show(contextMenuStrip.Items.Count.ToString(), "Count", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            for (int i = 0; i < contextMenuStrip.Items.Count; ++i)
+
+            sw.WriteLine("[HotKeyStart]");
+            for (int i = 1; i < contextMenuStrip.Items.Count; ++i)
             {
-                string keyStr = contextMenuStrip.Items[i].Text + ":" + "Alt+" + Enum.GetName(typeof(Keys), 49+i);
+                string keyStr = "P|" + contextMenuStrip.Items[i].Text + "|" + Enum.GetName(typeof(HotKey.KeyModifiers), modifiers) + "+" + Enum.GetName(typeof(Keys), HotKeyOffset + i) +"|None";
                 sw.WriteLine(keyStr);
             }
+            sw.WriteLine("[HotKeyEnd]");
+            sw.WriteLine("[Config]");
             sw.Close();
-            //List<string> ConfigList = File.ReadAllLines(CookPakConfigPath).ToList<string>();
-
-            //for (int i = 0; i < contextMenuStrip.Items.Count; ++i)
-            //{
-            //    contextMenuStrip.Items[i];
-            //}
         }
+        private void ReadConfigFile()
+        {
+            if (!File.Exists(ConfigFile))
+            {
+                WriteConfigFile();
+            }
+            ConfigList = File.ReadAllLines(ConfigFile).ToList<string>();
+            List<string> HotKeyList = new List<string>();
+            for(int i=0;i<ConfigList.Count;++i)
+            {
+                if (ConfigList[i] == "[HotKeyStart]")
+                {
+                    int index = 1;
+                    while (ConfigList[i + index] != "[HotKeyEnd]")
+                    {
+                        string[] split = ConfigList[i + index].Split('|');
+                        if (split.Length == 4)
+                        {
+                            HotKeyList.Add(split[2]);
+                            ++index;
+                            //如果是自定义菜单按键，初始化时重新生成
+                            if (split[0] == "C")
+                            {
+                                ToolStripMenuItem menuItem = new ToolStripMenuItem();
+                                menuItem.Text = split[1];
+                                menuItem.Click += ContextMenuCustomItem_Click;
+                                contextMenuStrip.Items.Add(menuItem);
+                                if (contextMenuStrip.Items.Count == 7)
+                                {
+                                    HotKeyEvent5 += StartAutoScript;
+                                }
+                                else if (contextMenuStrip.Items.Count == 8)
+                                {
+                                    HotKeyEvent6 += StartAutoScript;
+                                }
+                                else if (contextMenuStrip.Items.Count == 9)
+                                {
+                                    HotKeyEvent7 += StartAutoScript;
+                                }
+                                else if (contextMenuStrip.Items.Count == 10)
+                                {
+                                    HotKeyEvent8 += StartAutoScript;
+                                }
+                                else if (contextMenuStrip.Items.Count == 11)
+                                {
+                                    HotKeyEvent9 += StartAutoScript;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            XtraMessageBox.Show("发现热键配置有误:" + ConfigList[i], "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                    }
+                }
+            }
+            //为除第一个AddNew按键之外的其他按键注册热键
+            for (int i = 1; i < contextMenuStrip.Items.Count; ++i)
+            {
+                if (HotKeyList.Count <= 0)
+                {
+                    break;
+                }
+                contextMenuStrip.Items[i].AutoToolTip = true;
+                contextMenuStrip.Items[i].ToolTipText = HotKeyList[i-1].Replace("D", "");
+                string[] Split = HotKeyList[i - 1].Split('+');
 
+                Keys Key = Keys.None;
+                HotKey.KeyModifiers modifiers = HotKey.KeyModifiers.None;
+                if (GetHotKeyByString(HotKeyList[i - 1], ref Key, ref modifiers))
+                {
+                    if (Split.Length == 2)
+                    {
+                        HotKey.RegHotKey(Handle, HotKeyID, modifiers, Key);
+                        HotKeyDic.Add(HotKeyID, contextMenuStrip.Items[i].Text);
+                        ++HotKeyID;
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("发现热键配置有误:" + HotKeyList[i - 1], "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    }
+
+                }   
+            }
+        }
+        private bool GetHotKeyByString(string name,ref Keys key,ref HotKey.KeyModifiers modifier)
+        {
+            string[] Split = name.Split('+');
+            foreach (Keys item in Enum.GetValues(typeof(Keys)))
+            {
+                if (Enum.GetName(typeof(Keys), item) == Split[1])
+                {
+                    key = item;
+                }
+            }
+            foreach (HotKey.KeyModifiers item in Enum.GetValues(typeof(HotKey.KeyModifiers)))
+            {
+                if (Enum.GetName(typeof(HotKey.KeyModifiers), item) == Split[0])
+                {
+                    modifier = item;
+                }
+            }
+            if (key == Keys.None || modifier == HotKey.KeyModifiers.None)
+            {
+                return false;
+            }
+            return true;
+        }
+        //注销ContextMenu菜单注册的热键
+        private void DestroyContextMenu()
+        {
+
+            for (int i = 0; i < HotKeyID; ++i)
+            {
+                HotKey.UnRegHotKey(Handle, i);
+            }
+        }
+        //根据热键ID响应对应事件
+        private void HotKeyDown(int HotKey)
+        {
+            switch (HotKey)
+            {
+                case 0:
+                    uECookToolStripMenuItem_Click(null, null);
+                    break;
+                case 1:
+                    uEPakToolStripMenuItem_Click(null, null);
+                    break;
+                case 2:
+                    uECookPakToolStripMenuItem_Click(null, null);
+                    break;
+                case 3:
+                    ShowForm();
+                    break;
+                case 4:
+                    Close();
+                    break;
+                case 5:
+                    if (HotKeyEvent5 != null)
+                    {
+                        HotKeyEvent5(FindAutoScript(5));
+                    }
+                    break;
+                case 6:
+                    if (HotKeyEvent6 != null)
+                    {
+                        HotKeyEvent6(FindAutoScript(6));
+                    }                      
+                    break;
+                case 7:
+                    if (HotKeyEvent7 != null)
+                    {
+                        HotKeyEvent7(FindAutoScript(7));
+                    }                      
+                    break;
+                case 8:
+                    if (HotKeyEvent8 != null)
+                    {
+                        HotKeyEvent8(FindAutoScript(8));
+                    }                       
+                    break;
+                case 9:
+                    if (HotKeyEvent9 != null)
+                    {
+                        HotKeyEvent9(FindAutoScript(9));
+                    }                       
+                    break;
+            }
+        }
+        //获取自定义脚本完整路径
+        string FindAutoScript(int key)
+        {
+            foreach (string item in ConfigList)
+            {
+                string[] split = item.Split('|');
+                if (split.Length != 4)
+                {
+                    continue;
+                }
+                if (split[1] == HotKeyDic[key])
+                {
+                    return split[3];
+                }
+            }
+            return string.Empty;
+        }
+        private void StartAutoScript(string ScriptPath)
+        {
+            Process proc = null;
+            try
+            {
+                proc = new Process();
+                proc.StartInfo.FileName = ScriptPath;
+                proc.StartInfo.Arguments = string.Format("10");
+                proc.StartInfo.CreateNoWindow = false;
+                proc.Start();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception Occurred :{0},{1}", ex.Message, ex.StackTrace.ToString());
+            }
+        }
         #endregion
         #region Cook&Pak
         string UEEditorCmd = "\\Engine\\Binaries\\Win64\\UE4Editor-Cmd.exe";
@@ -397,7 +621,7 @@ namespace IDE
                 {
                     for (int indextmp = 0; indextmp < PakDt.Rows.Count; ++indextmp)
                     {
-                        string cmd = "if not exist %pakdir" + indextmp + "% (echo %pakdir" + indextmp + "% done not exist; pause)";
+                        string cmd = "if not exist %pakdir" + indextmp + "% (\necho %pakdir" + indextmp + "% done not exist\npause\n)";
                         BatList.Insert(i + 1 + indextmp, cmd);
                     }
                 }
@@ -468,23 +692,23 @@ namespace IDE
         }
         private void buttonEdit_EditorCmd_Click(object sender, EventArgs e)
         {
-            folderDialog.Description = "Select UE Editor-Cmd.exe file";
-            if (folderDialog.ShowDialog() == DialogResult.OK)
+            fileDialog.Title = "Select UE Editor-Cmd.exe file";
+            if (fileDialog.ShowDialog() == DialogResult.OK)
             {
-                buttonEdit_EditorCmd.Text = folderDialog.SelectedPath;
+                buttonEdit_EditorCmd.Text = fileDialog.FileName;
             }
         }
         private void buttonEdit_UnrealPaK_Click(object sender, EventArgs e)
         {
-            folderDialog.Description = "Select UE UnrealPaK.exe file";
-            if (folderDialog.ShowDialog() == DialogResult.OK)
+            fileDialog.Title = "Select UE UnrealPaK.exe file";
+            if (fileDialog.ShowDialog() == DialogResult.OK)
             {
-                buttonEdit_UnrealPaK.Text = folderDialog.SelectedPath;
+                buttonEdit_UnrealPaK.Text = fileDialog.FileName;
             }
         }
         private void buttonEdit_Project_Click(object sender, EventArgs e)
         {
-            folderDialog.Description = "Select Project file";
+            folderDialog.Description = "Select Project folder";
             if (folderDialog.ShowDialog() == DialogResult.OK)
             {
                 buttonEdit_Project.Text = folderDialog.SelectedPath;
@@ -526,6 +750,15 @@ namespace IDE
         private void buttonEdit_CookLogOutput_Click(object sender, EventArgs e)
         {
             folderDialog.Description = "Select Pak output folder";
+            if (folderDialog.ShowDialog() == DialogResult.OK)
+            {
+                buttonEdit_CookLogOutput.Text = folderDialog.SelectedPath + "\\UECookLog";
+            }
+        }
+
+        private void buttonEdit_Uproject_ButtonClick(object sender, ButtonPressedEventArgs e)
+        {
+            folderDialog.Description = "Select .uproject file";
             if (folderDialog.ShowDialog() == DialogResult.OK)
             {
                 buttonEdit_CookLogOutput.Text = folderDialog.SelectedPath + "\\UECookLog";
@@ -803,7 +1036,65 @@ namespace IDE
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
+        }
+
+        private void addNewYoolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddNewForm form = new AddNewForm();
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.ShowDialog();
+            if (form.DialogResult == DialogResult.OK)
+            {
+                ToolStripMenuItem menuItem = new ToolStripMenuItem();
+                menuItem.Text = form.ButtonName;
+                menuItem.Click += ContextMenuCustomItem_Click;
+                contextMenuStrip.Items.Add(menuItem);
+                if (contextMenuStrip.Items.Count == 7)
+                {
+                    HotKeyEvent5 += StartAutoScript;
+                    HotKey.RegHotKey(Handle, ++HotKeyID, form.Modifier, form.Key);
+                }
+                else if (contextMenuStrip.Items.Count == 8)
+                {
+                    HotKeyEvent6 += StartAutoScript;
+                    HotKey.RegHotKey(Handle, ++HotKeyID, form.Modifier, form.Key);
+                }
+                else if (contextMenuStrip.Items.Count == 9)
+                {
+                    HotKeyEvent7 += StartAutoScript;
+                    HotKey.RegHotKey(Handle, ++HotKeyID, form.Modifier, form.Key);
+                }
+                else if (contextMenuStrip.Items.Count == 10)
+                {
+                    HotKeyEvent8 += StartAutoScript;
+                    HotKey.RegHotKey(Handle, ++HotKeyID, form.Modifier, form.Key);
+                }
+                else if (contextMenuStrip.Items.Count == 11)
+                {
+                    HotKeyEvent9 += StartAutoScript;
+                    HotKey.RegHotKey(Handle, ++HotKeyID, form.Modifier, form.Key);
+                }
+                HotKeyDic.Add(HotKeyID, form.ButtonName);
+                if (XtraMessageBox.Show("配置完成，程序将自动重启以使配置生效", "Restart", MessageBoxButtons.OK, MessageBoxIcon.Error) == DialogResult.OK)
+                {
+                    Restart();
+                }
+            }
+        }
+
+        private void ContextMenuCustomItem_Click(object sender, EventArgs e)
+        {
+            AddNewForm form = new AddNewForm();
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.ShowDialog();
+            if (form.DialogResult == DialogResult.OK)
+            {
+                if (XtraMessageBox.Show("配置完成，程序将自动重启以使配置生效", "Restart", MessageBoxButtons.OK, MessageBoxIcon.Error) == DialogResult.OK)
+                {
+                    Restart();
+                }
+            }
         }
         #endregion
         #region Software Set

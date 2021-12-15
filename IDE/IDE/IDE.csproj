@@ -223,19 +223,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddNewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddNewForm.Designer.cs">
+      <DependentUpon>AddNewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HotKey.cs" />
     <Compile Include="IDE.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="IDE.designer.cs">
       <DependentUpon>IDE.cs</DependentUpon>
     </Compile>
-    <Compile Include="KeyCodeHook.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddNewForm.resx">
+      <DependentUpon>AddNewForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IDE.resx">
       <DependentUpon>IDE.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
