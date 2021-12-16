@@ -35,27 +35,28 @@ UE4 Pak
 
 ## 最新版本
 
+[TMD_1.2.3_20211216_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.2.3_20211216_release.zip)
+
+## 历史版本
+
+[TMD_1.2.3_20211216_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.2.3_20211216_release.zip)
+
 [TMD_1.2.1_20211215_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.2.1_20211201_release.zip)
 
-## 历史版本
-
 [TMD_1.1.0_20211201_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.1.0._20211201_release.zip)
 
-[TMD_0.1.1_20210728_alpha](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_0.1.1_20210728_alpha.zip)
-
-[TMD_1.1.0_20211201_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.1.0._20211201_release.zip)
--------
-## 历史版本
 [TMD_0.1.1_20210728_alpha](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_0.1.1_20210728_alpha.zip)
 
 ## TMD_1.2.2_20211216_release
+
+[TMD_1.2.3_20211216_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.2.3_20211216_release.zip)
 
 - 优化了未选择Pak文件时直接Pak的提示信息。
 - 删除了热键被占用时的提示信息。
 - 修复生成脚本失败时未关闭脚本的bug。
 - 删除上一版本Setting界面的debug遗留。
 
-## TMD_1.2.0_20211215_release
+## TMD_1.2.1_20211215_release
 
 [TMD_1.2.1_20211215_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.2.1_20211201_release.zip)
 
