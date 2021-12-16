@@ -124,14 +124,6 @@ namespace IDE
             this.emptySpaceItem11 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem12 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem26 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.xtraTabPage_Settings = new DevExpress.XtraTab.XtraTabPage();
-            this.layoutControl8 = new DevExpress.XtraLayout.LayoutControl();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.layoutControlGroup7 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem28 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem14 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.layoutControlItem29 = new DevExpress.XtraLayout.LayoutControlItem();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
@@ -231,13 +223,6 @@ namespace IDE
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).BeginInit();
-            this.xtraTabPage_Settings.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl8)).BeginInit();
-            this.layoutControl8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem29)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
@@ -267,8 +252,7 @@ namespace IDE
             this.xtraTabPage_UnrealEngineCookAndPak,
             this.xtraTabPage_SOAnalyze,
             this.xtraTabPage_SoftwareSet,
-            this.xtraTabPage_About,
-            this.xtraTabPage_Settings});
+            this.xtraTabPage_About});
             // 
             // xtraTabPage_UnrealEngineCookAndPak
             // 
@@ -1186,77 +1170,6 @@ namespace IDE
             this.layoutControlItem26.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem26.TextVisible = false;
             // 
-            // xtraTabPage_Settings
-            // 
-            this.xtraTabPage_Settings.Controls.Add(this.layoutControl8);
-            this.xtraTabPage_Settings.Name = "xtraTabPage_Settings";
-            this.xtraTabPage_Settings.Size = new System.Drawing.Size(678, 481);
-            this.xtraTabPage_Settings.Text = "Setting";
-            // 
-            // layoutControl8
-            // 
-            this.layoutControl8.Controls.Add(this.textBox1);
-            this.layoutControl8.Controls.Add(this.label1);
-            this.layoutControl8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl8.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl8.Name = "layoutControl8";
-            this.layoutControl8.Root = this.layoutControlGroup7;
-            this.layoutControl8.Size = new System.Drawing.Size(678, 481);
-            this.layoutControl8.TabIndex = 0;
-            this.layoutControl8.Text = "layoutControl8";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(136, 36);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(530, 20);
-            this.textBox1.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(12, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(654, 20);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "label1";
-            // 
-            // layoutControlGroup7
-            // 
-            this.layoutControlGroup7.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.layoutControlGroup7.GroupBordersVisible = false;
-            this.layoutControlGroup7.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem28,
-            this.emptySpaceItem14,
-            this.layoutControlItem29});
-            this.layoutControlGroup7.Name = "layoutControlGroup7";
-            this.layoutControlGroup7.Size = new System.Drawing.Size(678, 481);
-            this.layoutControlGroup7.TextVisible = false;
-            // 
-            // layoutControlItem28
-            // 
-            this.layoutControlItem28.Control = this.label1;
-            this.layoutControlItem28.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem28.Name = "layoutControlItem28";
-            this.layoutControlItem28.Size = new System.Drawing.Size(658, 24);
-            this.layoutControlItem28.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem28.TextVisible = false;
-            // 
-            // emptySpaceItem14
-            // 
-            this.emptySpaceItem14.AllowHotTrack = false;
-            this.emptySpaceItem14.Location = new System.Drawing.Point(0, 48);
-            this.emptySpaceItem14.Name = "emptySpaceItem14";
-            this.emptySpaceItem14.Size = new System.Drawing.Size(658, 413);
-            this.emptySpaceItem14.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // layoutControlItem29
-            // 
-            this.layoutControlItem29.Control = this.textBox1;
-            this.layoutControlItem29.Location = new System.Drawing.Point(0, 24);
-            this.layoutControlItem29.Name = "layoutControlItem29";
-            this.layoutControlItem29.Size = new System.Drawing.Size(658, 24);
-            this.layoutControlItem29.TextSize = new System.Drawing.Size(112, 14);
-            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -1444,13 +1357,6 @@ namespace IDE
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).EndInit();
-            this.xtraTabPage_Settings.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl8)).EndInit();
-            this.layoutControl8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem29)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             this.contextMenuStrip.ResumeLayout(false);
@@ -1562,14 +1468,6 @@ namespace IDE
         private DevExpress.XtraEditors.SimpleButton Btn_PakList;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem27;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem13;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage_Settings;
-        private DevExpress.XtraLayout.LayoutControl layoutControl8;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup7;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem28;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem14;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem29;
         private System.Windows.Forms.ToolStripMenuItem addNewYoolStripMenuItem;
     }
 }

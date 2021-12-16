@@ -641,7 +641,8 @@ namespace IDE
                         }
                         else
                         {
-                            XtraMessageBox.Show("生成Pak命令是出错", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            XtraMessageBox.Show("请选择pak文件夹", "Tip", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            sw.Close();
                             return false;
                         }
                         BatList[i + 2] = "start explorer \"%outputdir%\\Paks_%time%\"";

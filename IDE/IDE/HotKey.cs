@@ -53,7 +53,7 @@ namespace IDE
                 int errorCode = Marshal.GetLastWin32Error();
                 if (errorCode == 1409)
                 {
-                    XtraMessageBox.Show("热键被占用!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //XtraMessageBox.Show("热键被占用!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
