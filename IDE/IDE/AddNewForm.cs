@@ -33,6 +33,7 @@ namespace IDE
         {
 
             TMDIDE.fileDialog.Title = "Select Project file";
+            TMDIDE.fileDialog.Filter = "可执行文件|*.*";
             if (TMDIDE.fileDialog.ShowDialog() == DialogResult.OK)
             {
                 buttonEdit_FilePath.Text = TMDIDE.fileDialog.FileName;

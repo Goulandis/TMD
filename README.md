@@ -35,9 +35,11 @@ UE4 Pak
 
 ## 最新版本
 
-[TMD_1.2.3_20211216_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.2.3_20211216_release.zip)
+[TMD_1.2.4_20211222_release]()
 
 ## 历史版本
+
+[TMD_1.2.4_20211222_release]()
 
 [TMD_1.2.3_20211216_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.2.3_20211216_release.zip)
 
@@ -47,7 +49,13 @@ UE4 Pak
 
 [TMD_0.1.1_20210728_alpha](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_0.1.1_20210728_alpha.zip)
 
-## TMD_1.2.2_20211216_release
+## TMD_1.2.4_20211222_release
+
+[TMD_1.2.4_20211222_release]()
+
+- 修复AddNew新增自定义快捷按钮时文件可选类型为.pak的bug
+
+## TMD_1.2.3_20211216_release
 
 [TMD_1.2.3_20211216_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.2.3_20211216_release.zip)
 
