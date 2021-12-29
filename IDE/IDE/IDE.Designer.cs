@@ -63,7 +63,7 @@ namespace IDE
             this.buttonEdit_PakOutput = new DevExpress.XtraEditors.ButtonEdit();
             this.buttonEdit_Uproject = new DevExpress.XtraEditors.ButtonEdit();
             this.buttonEdit_Project = new DevExpress.XtraEditors.ButtonEdit();
-            this.buttonEdit_UnrealPaK = new DevExpress.XtraEditors.ButtonEdit();
+            this.buttonEdit_UnrealPak = new DevExpress.XtraEditors.ButtonEdit();
             this.buttonEdit_EditorCmd = new DevExpress.XtraEditors.ButtonEdit();
             this.buttonEdit_UEFolder = new DevExpress.XtraEditors.ButtonEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -166,7 +166,7 @@ namespace IDE
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit_PakOutput.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit_Uproject.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit_Project.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonEdit_UnrealPaK.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonEdit_UnrealPak.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit_EditorCmd.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit_UEFolder.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
@@ -272,7 +272,7 @@ namespace IDE
             this.layoutControl2.Controls.Add(this.buttonEdit_PakOutput);
             this.layoutControl2.Controls.Add(this.buttonEdit_Uproject);
             this.layoutControl2.Controls.Add(this.buttonEdit_Project);
-            this.layoutControl2.Controls.Add(this.buttonEdit_UnrealPaK);
+            this.layoutControl2.Controls.Add(this.buttonEdit_UnrealPak);
             this.layoutControl2.Controls.Add(this.buttonEdit_EditorCmd);
             this.layoutControl2.Controls.Add(this.buttonEdit_UEFolder);
             this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -576,15 +576,15 @@ namespace IDE
             // 
             // buttonEdit_UnrealPaK
             // 
-            this.buttonEdit_UnrealPaK.Location = new System.Drawing.Point(140, 60);
-            this.buttonEdit_UnrealPaK.Name = "buttonEdit_UnrealPaK";
-            this.buttonEdit_UnrealPaK.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.buttonEdit_UnrealPak.Location = new System.Drawing.Point(140, 60);
+            this.buttonEdit_UnrealPak.Name = "buttonEdit_UnrealPaK";
+            this.buttonEdit_UnrealPak.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.buttonEdit_UnrealPaK.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.buttonEdit_UnrealPaK.Size = new System.Drawing.Size(526, 20);
-            this.buttonEdit_UnrealPaK.StyleController = this.layoutControl2;
-            this.buttonEdit_UnrealPaK.TabIndex = 11;
-            this.buttonEdit_UnrealPaK.Click += new System.EventHandler(this.buttonEdit_UnrealPaK_Click);
+            this.buttonEdit_UnrealPak.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.buttonEdit_UnrealPak.Size = new System.Drawing.Size(526, 20);
+            this.buttonEdit_UnrealPak.StyleController = this.layoutControl2;
+            this.buttonEdit_UnrealPak.TabIndex = 11;
+            this.buttonEdit_UnrealPak.Click += new System.EventHandler(this.buttonEdit_UnrealPaK_Click);
             // 
             // buttonEdit_EditorCmd
             // 
@@ -652,7 +652,7 @@ namespace IDE
             // 
             // EditButton_UnrealPak
             // 
-            this.EditButton_UnrealPak.Control = this.buttonEdit_UnrealPaK;
+            this.EditButton_UnrealPak.Control = this.buttonEdit_UnrealPak;
             this.EditButton_UnrealPak.Location = new System.Drawing.Point(0, 48);
             this.EditButton_UnrealPak.Name = "EditButton_UnrealPak";
             this.EditButton_UnrealPak.Size = new System.Drawing.Size(658, 24);
@@ -1300,7 +1300,7 @@ namespace IDE
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit_PakOutput.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit_Uproject.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit_Project.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonEdit_UnrealPaK.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonEdit_UnrealPak.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit_EditorCmd.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit_UEFolder.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
@@ -1379,7 +1379,7 @@ namespace IDE
         private DevExpress.XtraEditors.ButtonEdit buttonEdit_EditorCmd;
         private DevExpress.XtraLayout.LayoutControlItem EditButton_UEEditorCmd;
         private DevExpress.XtraEditors.ButtonEdit buttonEdit_Project;
-        private DevExpress.XtraEditors.ButtonEdit buttonEdit_UnrealPaK;
+        private DevExpress.XtraEditors.ButtonEdit buttonEdit_UnrealPak;
         private DevExpress.XtraLayout.LayoutControlItem EditButton_UnrealPak;
         private DevExpress.XtraLayout.LayoutControlItem EditButton_Project;
         private DevExpress.XtraEditors.ButtonEdit buttonEdit_Uproject;

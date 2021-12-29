@@ -357,7 +357,7 @@ namespace IDE
             sw.WriteLine("[Uproject]");
             sw.WriteLine(buttonEdit_Uproject.Text);
             sw.WriteLine("[UnrealPak]");
-            sw.WriteLine(buttonEdit_UnrealPaK.Text);
+            sw.WriteLine(buttonEdit_UnrealPak.Text);
             sw.WriteLine("[UE4Editor-Cmd]");
             sw.WriteLine(buttonEdit_EditorCmd.Text);
             sw.WriteLine("[Outputdir]");
@@ -411,7 +411,7 @@ namespace IDE
                 }
                 else if (ConfigContents[i] == "[UnrealPak]")
                 {
-                    buttonEdit_UnrealPaK.Text = ConfigContents[i + 1];
+                    buttonEdit_UnrealPak.Text = ConfigContents[i + 1];
                 }
                 else if (ConfigContents[i] == "[Uproject]")
                 {
@@ -537,7 +537,7 @@ namespace IDE
                 }
                 else if (BatList[i] == "rem UnrealPak")
                 {
-                    BatList[i + 1] = "set UnrealPak=" + buttonEdit_UnrealPaK.Text;
+                    BatList[i + 1] = "set UnrealPak=" + buttonEdit_UnrealPak.Text;
                 }
                 else if (BatList[i] == "rem uproject")
                 {
@@ -684,16 +684,17 @@ namespace IDE
             }
             if (File.Exists(UnrealPakTmp))
             {
-                buttonEdit_UnrealPaK.Text = UnrealPakTmp;
+                buttonEdit_UnrealPak.Text = UnrealPakTmp;
             }
             else
             {
-                buttonEdit_EditorCmd.Text = "未自动找到UnrealPak.exe,可以试着手动选择";
+                buttonEdit_UnrealPak.Text = "未自动找到UnrealPak.exe(可能是UnrealPak工具未编译)，可以试着手动选择";
             }
         }
         private void buttonEdit_EditorCmd_Click(object sender, EventArgs e)
         {
             fileDialog.Title = "Select UE Editor-Cmd.exe file";
+            fileDialog.Filter = "exe文件|*.exe";
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
                 buttonEdit_EditorCmd.Text = fileDialog.FileName;
@@ -702,9 +703,10 @@ namespace IDE
         private void buttonEdit_UnrealPaK_Click(object sender, EventArgs e)
         {
             fileDialog.Title = "Select UE UnrealPaK.exe file";
+            fileDialog.Filter = "exe文件|*.exe";
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
-                buttonEdit_UnrealPaK.Text = fileDialog.FileName;
+                buttonEdit_UnrealPak.Text = fileDialog.FileName;
             }
         }
         private void buttonEdit_Project_Click(object sender, EventArgs e)
@@ -842,7 +844,7 @@ namespace IDE
                 File.Create(PakListBat);
             }
             StreamWriter sw = new StreamWriter(PakListBat);
-            string PakListCmd = "set PakListCmd=" + buttonEdit_UnrealPaK.Text + " " + FilePath + " -list";
+            string PakListCmd = "set PakListCmd=" + buttonEdit_UnrealPak.Text + " " + FilePath + " -list";
             sw.WriteLine(PakListCmd);
             sw.WriteLine("%PakListCmd%");
             sw.WriteLine("pause");

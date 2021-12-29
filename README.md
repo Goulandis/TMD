@@ -35,9 +35,11 @@ UE4 Pak
 
 ## 最新版本
 
-[TMD_1.2.4_20211222_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.2.4_20211222_release.zip)
+[TMD_1.2.5_20211229_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.2.4_20211222_release.zip)
 
 ## 历史版本
+
+[TMD_1.2.5_20211229_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.2.4_20211222_release.zip)
 
 [TMD_1.2.4_20211222_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.2.4_20211222_release.zip)
 
@@ -70,6 +72,12 @@ UE4 Pak
 AddNew按钮无快捷键，软件预留了4个按钮用于添加自定义快捷脚本。增加这个功能的原因是有时候开发中有一些繁琐而又重复的步骤，我们可以通过写一个.bat脚本来批量执行或者要运行某个exe来解算，但是这个.bat脚本可能又需要手动频繁的调用，当文件夹开的比较多的时候找起来很麻烦，而这些脚本又没办法使用快捷键快速启动，所就新增了一个接口，以便这些自定义脚本也能使用全局快捷键来快速启动。
 
 新增的按钮会永久保存，不会在下次启动软件后消失，按钮的配置在软件目录/Config/Config.ini文件中的[HotKeyStart]项找到，P开头的为预定义配置，C开头的为自定义配置，预定义配置也可以在配置文件中修改快捷键。
+
+## TMD_1.2.5_20211229_release
+
+[TMD_1.2.5_20211229_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.2.4_20211222_release.zip)
+
+- 修复cook-pak工具自动选择失败时，手动选择文件类型异常的bug
 
 ## TMD_1.2.4_20211222_release
 
