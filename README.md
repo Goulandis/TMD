@@ -35,11 +35,11 @@ UE4 Pak
 
 ## 最新版本
 
-[TMD_1.2.5_20211229_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.2.4_20211222_release.zip)
+[TMD_1.2.5_20211229_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.2.5_20211229_release.zip)
 
 ## 历史版本
 
-[TMD_1.2.5_20211229_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.2.4_20211222_release.zip)
+[TMD_1.2.5_20211229_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.2.5_20211229_release.zip)
 
 [TMD_1.2.4_20211222_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.2.4_20211222_release.zip)
 
@@ -75,7 +75,7 @@ AddNew按钮无快捷键，软件预留了4个按钮用于添加自定义快捷�
 
 ## TMD_1.2.5_20211229_release
 
-[TMD_1.2.5_20211229_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.2.4_20211222_release.zip)
+[TMD_1.2.5_20211229_release](https://github.com/Goulandis/TMD/raw/main/Zip/TMD_1.2.5_20211229_release.zip)
 
 - 修复cook-pak工具自动选择失败时，手动选择文件类型异常的bug
 
